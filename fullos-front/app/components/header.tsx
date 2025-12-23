@@ -19,7 +19,6 @@ const Header = ({ headerLabels, isBtn }: Props) => {
                             className="w-[7.5dvw]"
                         />
                     </div>
-
                     <div className="hidden sm:block py-1">
                         <FullLogo
                             className="w-20 md:w-24"
@@ -27,7 +26,7 @@ const Header = ({ headerLabels, isBtn }: Props) => {
                     </div>
                 </li>
                 {headerLabels.map(label => (
-                    <li key={label}>{label}</li>
+                    <li className="cursor-pointer" key={label}>{label}</li>
                 ))}
                 {isBtn ? <SignUpBtn /> : headerLabels[2]}
             </ul>

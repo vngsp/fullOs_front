@@ -2,6 +2,7 @@ import { Poppins, KoHo, Noto_Sans_Lao } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./utils/provider";
+import Background from "./components/background";
 
 const poppins = Poppins({
   weight: "300",
@@ -36,10 +37,10 @@ export default function RootLayout({
       <body className={`
           ${poppins.variable} ${koho.variable}
           ${lao.variable}
-          antialiased p-7
-          `
+          antialiased p-7 relative`
       }>
         <Providers>
+          <Background />
           {children}
         </Providers>
       </body>

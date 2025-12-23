@@ -1,3 +1,4 @@
+import BgForm from "./components/bgForm"
 import Header from "./components/header"
 
 export const Page = () => {
