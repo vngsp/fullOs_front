@@ -9,7 +9,7 @@ type Props = {
 const Header = ({ headerLabels, isBtn }: Props) => {
     return (
         <div
-            className="bg-secondary-el py-2 md:py-2.5 px-3 sm:p-1 rounded-2xl w-[90dvw] text-[3.2vw] sm:text-[12px] md:text-sm
+            className="bg-secondary-el py-2 max-md:py-2.5 px-3 sm:p-1 rounded-2xl w-[90dvw] text-[3.2vw] sm:text-[12px] md:text-sm
             text-nowrap font-koho shadow-[0_4px_8px_3px_rgba(0,0,0,0.15),0_1px_3px_0_rgba(0,0,0,0.3)]"
         >
             <ul className="flex items-center justify-between sm:justify-center gap-4 md:gap-6">
@@ -28,7 +28,7 @@ const Header = ({ headerLabels, isBtn }: Props) => {
                 {headerLabels.map(label => (
                     <li className="cursor-pointer" key={label}>{label}</li>
                 ))}
-                {isBtn ? <SignUpBtn /> : headerLabels[2]}
+                {isBtn ? <SignUpBtn label="Registre-se" /> : headerLabels[2]}
             </ul>
         </div>
     )

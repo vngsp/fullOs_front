@@ -17,6 +17,10 @@ const backgrounds = [
     },
     {
         className:
+            "sm:hidden left-58 sm:left-150 lg:left-180 xl:left-280 top-200 sm:top-90 lg:top-110 rotate-45 stroke-white-el",
+    },
+    {
+        className:
             "hidden sm:block left-58 md:left-110 lg:left-120 xl:left-200 top-70 sm:top-40 -rotate-12 stroke-red-theme",
     },
     {
