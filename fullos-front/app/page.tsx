@@ -1,21 +1,15 @@
-import Header from "./components/header"
-import Title from "./components/Title"
 import SignUpBtn from "./components/signUpBtn"
 import Text from "./components/text"
 import Image from "next/image"
 import ordersMobile from '@/public/ordersMobile.jpeg'
 import ordersDesktop from '@/public/ordersDesktop.jpeg'
+import SectionTitle from "./components/sectionTitle"
 
 export const Page = () => {
   return (
     <div className="flex flex-col">
-      <Header
-        headerLabels={['Planos', 'Sobre Nós']}
-        isBtn={true}
-      />
-
       <div className="mt-6 lg:mt-10 flex flex-col items-center gap-4 lg:gap-6">
-        <Title
+        <SectionTitle
           text="A ferramenta definitiva de gerenciamento"
           highlightWord={2}
         />
@@ -24,7 +18,7 @@ export const Page = () => {
       </div>
 
       <div className="mt-6 flex flex-col items-center gap-8">
-        <Title
+        <SectionTitle
           text="Visualize o tempo gasto em cada ordem"
           secondaryTitle={true}
         />

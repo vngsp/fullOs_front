@@ -34,7 +34,7 @@ const backgrounds = [
 ];
 
 const Background = () => (
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10 overflow-hidden">
         {backgrounds.map((bg, index) => (
             <BgForm
                 key={index}

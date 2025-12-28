@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./utils/provider";
 import Background from "./components/background";
+import Header from "./components/header";
 
 const poppins = Poppins({
   weight: "300",
@@ -41,6 +42,13 @@ export default function RootLayout({
       }>
         <Providers>
           <Background />
+          <Header
+            headerItems={[
+              { label: 'Planos', href: '/plans' },
+              { label: 'Sobre Nós', href: '/about' }
+            ]}
+            isBtn={true}
+          />
           {children}
         </Providers>
       </body>
