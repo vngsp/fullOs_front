@@ -49,10 +49,30 @@ const Plans = ({ packageName, fullValue, itemsTexts, fullMode, plus }: Props) =>
                 }
             </ul>
             <div className="flex justify-center">
-                {fullMode
-                    ? <SignUpBtn label="Contrate agora" className="w-36 text-[10px] py-3 px-3 text-nowrap lg:p-4" />
-                    : <SignUpBtn label="Contrate agora" darkMode={true} className="w-36" />
-                }
+                {fullMode ? (
+                    <>
+                        <div className="sm:hidden">
+                            <SignUpBtn
+                                label="Contrate agora"
+                                darkMode
+                                className="w-36 text-[10px] py-3 px-3 text-nowrap"
+                            />
+                        </div>
+
+                        <div className="hidden sm:block">
+                            <SignUpBtn
+                                label="Contrate agora"
+                                className="w-36 text-[10px] py-3 px-3 text-nowrap lg:p-4"
+                            />
+                        </div>
+                    </>
+                ) : (
+                    <SignUpBtn
+                        label="Contrate agora"
+                        darkMode
+                        className="w-36"
+                    />
+                )}
             </div>
         </div>
     )
