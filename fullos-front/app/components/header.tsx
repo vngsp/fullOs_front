@@ -43,7 +43,9 @@ const Header = ({ headerItems, isBtn }: Props) => {
                             </Link>
                         </li>
                     ))}
-                    {isBtn && <SignUpBtn label="Registre-se" />}
+                    <Link href={'/register'}>
+                        {isBtn && <SignUpBtn label="Registre-se" />}
+                    </Link>
                 </ul>
             </header>
         </div>

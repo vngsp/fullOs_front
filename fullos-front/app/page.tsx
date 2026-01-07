@@ -4,17 +4,28 @@ import Image from "next/image"
 import ordersMobile from '@/public/ordersMobile.jpeg'
 import ordersDesktop from '@/public/ordersDesktop.jpeg'
 import SectionTitle from "./components/sectionTitle"
+import Link from "next/link"
+import Header from "./components/header"
 
 export const Page = () => {
   return (
     <div className="flex flex-col">
+      <Header
+        headerItems={[
+          { label: "Planos", href: "/plans" },
+          { label: "Sobre Nós", href: "/about" },
+        ]}
+        isBtn
+      />
       <div className="mt-6 lg:mt-10 flex flex-col items-center gap-4 lg:gap-6">
         <SectionTitle
           text="A ferramenta definitiva de gerenciamento"
           highlightWord={2}
         />
         <Text text="Gerencie suas ordens de serviço de forma totalmente interativa" />
-        <SignUpBtn label="Embarque na experiência" darkMode={true} />
+        <Link href={'/register'}>
+          <SignUpBtn label="Embarque na experiência" darkMode={true} />
+        </Link>
       </div>
 
       <div className="mt-6 flex flex-col items-center gap-8">
