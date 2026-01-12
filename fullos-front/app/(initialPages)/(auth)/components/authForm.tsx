@@ -9,6 +9,7 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthSchema, AuthSchemaObj } from "@/app/schemas/authSchema"
+import { useRegisterUser } from "@/app/hooks/mutations"
 
 type Props = {
     isRegister?: boolean,
@@ -23,8 +24,10 @@ const AuthForm = ({ isRegister }: Props) => {
         }
     });
 
-    const handleFormSubmit = () => {
-        console.log('Bucetinhas')
+    const mutation = useRegisterUser();
+
+    const handleFormSubmit = (data: AuthSchemaObj) => {
+        mutation.mutate(data);
     }
 
     return (

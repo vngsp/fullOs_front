@@ -1,16 +1,20 @@
-import {useMutation, useQueryClient} from '@tanstack/react-query'
-import { useRouter } from 'next/router';
-import { AuthSchemaObj } from '../schemas/authSchema';
+'use client'
+import {useMutation } from '@tanstack/react-query'
 import { registerUser } from '../api/auth';
+import { AuthSchemaObj } from '../schemas/authSchema';
+import { useRouter } from 'next/navigation';
 
-export const useRegister = () => {
-    const queryClient = useQueryClient();
+export const useRegisterUser = () => {
     const router = useRouter();
 
     return useMutation({
         mutationFn: (data: AuthSchemaObj) => registerUser(data),
-        onSuccess: (res) => {
-            console.log('Sucesso')
+        mutationKey: ['registerUser'],  
+        onSuccess: (data) => {
+            router.push('/home');        
+        },
+        onError: (err) => {
+            console.error("Error for register", err);
         }
-    })
-}
+    });
+};
