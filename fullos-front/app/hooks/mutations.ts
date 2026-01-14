@@ -1,6 +1,6 @@
 'use client'
 import {useMutation } from '@tanstack/react-query'
-import { registerUser } from '../api/auth';
+import { authUser, registerUser } from '../api/auth';
 import { AuthSchemaObj } from '../schemas/authSchema';
 import { useRouter } from 'next/navigation';
 
@@ -18,3 +18,18 @@ export const useRegisterUser = () => {
         }
     });
 };
+
+export const useAuthUser = () => {
+    const router = useRouter();
+
+    return useMutation({
+        mutationFn: (data: AuthSchemaObj) => authUser(data),
+        mutationKey: ['authUser'],
+        onSuccess: () => {
+            router.push('/home');
+        },
+        onError: (err) => {
+            console.error("Error on auth", err);
+        }
+    })
+}

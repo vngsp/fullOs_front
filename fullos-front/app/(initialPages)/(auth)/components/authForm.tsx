@@ -9,7 +9,7 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthSchema, AuthSchemaObj } from "@/app/schemas/authSchema"
-import { useRegisterUser } from "@/app/hooks/mutations"
+import { useAuthUser, useRegisterUser } from "@/app/hooks/mutations"
 
 type Props = {
     isRegister?: boolean,
@@ -24,10 +24,15 @@ const AuthForm = ({ isRegister }: Props) => {
         }
     });
 
-    const mutation = useRegisterUser();
+    const register = useRegisterUser();
+    const login = useAuthUser();
 
     const handleFormSubmit = (data: AuthSchemaObj) => {
-        mutation.mutate(data);
+        isRegister ? register.mutate(data) : login.mutate(data);
+    }
+
+    const googleClick = () => {
+        window.location.href = 'http://localhost:1000/auth/google';
     }
 
     return (
@@ -57,16 +62,23 @@ const AuthForm = ({ isRegister }: Props) => {
                     control={control}
                     name="password"
                 />
-                <SignUpBtn darkMode label="Cadastre-se" padding="py-2 px-12" />
+                {isRegister
+                    ?
+                    <SignUpBtn darkMode label="Cadastre-se" padding="py-2 px-12" />
+                    :
+                    <SignUpBtn darkMode label="Entre agora" padding="py-2 px-12" />
+                }
                 <div className="flex items-center w-full gap-2 font-poppins font-light">
                     <span className="bg-white-el h-px flex-1 -ml-4"></span>
                     <span className="text-[12px] whitespace-nowrap">Ou continue com</span>
                     <span className="bg-white-el h-px flex-1 -mr-4"></span>
                 </div>
-                <GoogleBtn />
+                <GoogleBtn
+                    onClick={googleClick}
+                />
             </form>
             <BgForm
-                className="absolute w-28 sm:w-32 xl:w-40 -left-2 md:-left-8 
+                className="absolute w-28 sm:w-32 xl:w-40 -left-2 md:-left-8 pointer-events-none 
                     top-64 sm:top-60 lg:top-68 xl:top-68 stroke-white-el z-10 overflow-hidden -rotate-90"
             />
         </div>

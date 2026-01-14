@@ -18,7 +18,7 @@ const FormInput = <T extends FieldValues>({ label, placeholder, ...controllerPro
                 placeholder={placeholder}
                 type="text"
                 className="bg-white-el rounded-2xl p-1.5 placeholder:text-black-el/50 
-                placeholder:text-[10px] placeholder:pl-2 w-[50vw] sm:w-[30vw] lg:w-[20vw] xl:w-[14vw]"
+                placeholder:text-[10px] placeholder:pl-2 w-[50vw] sm:w-[30vw] lg:w-[20vw] xl:w-[14vw] text-black-el"
             />
             {fieldState.error && (
                 <span className="text-red-500 text-[10px]">
