@@ -3,7 +3,7 @@ type Props = {
     darkMode?: boolean,
     className?: string,
     padding?: string,
-    disabled: boolean
+    disabled?: boolean
 }
 
 const SignUpBtn = ({ darkMode, label, className, padding, disabled }: Props) => {
