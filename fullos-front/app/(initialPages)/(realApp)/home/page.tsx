@@ -1,11 +1,13 @@
 'use client'
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Page = () => {
+    const router = useRouter();
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
 
-        const accessToken = params.get('accesToken');
+        const accessToken = params.get('accessToken');
         const refreshToken = params.get('refreshToken');
 
         if (accessToken) {
@@ -17,6 +19,12 @@ const Page = () => {
 
         if (accessToken || refreshToken) {
             window.history.replaceState({}, '', '/home');
+            return;
+        }
+
+        const storedToken = localStorage.getItem('authToken');
+        if (!storedToken) {
+            router.replace('/login');
         }
     }, []);
 

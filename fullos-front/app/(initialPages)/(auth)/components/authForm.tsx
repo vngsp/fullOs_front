@@ -16,7 +16,7 @@ type Props = {
 }
 
 const AuthForm = ({ isRegister }: Props) => {
-    const { control, handleSubmit } = useForm<AuthSchemaObj>({
+    const { control, handleSubmit, setError, formState: { errors } } = useForm<AuthSchemaObj>({
         resolver: zodResolver(AuthSchema),
         defaultValues: {
             email: '',
@@ -24,8 +24,10 @@ const AuthForm = ({ isRegister }: Props) => {
         }
     });
 
-    const register = useRegisterUser();
+    const register = useRegisterUser(setError);
     const login = useAuthUser();
+
+    const isWorking = register.isPending || login.isPending;
 
     const handleFormSubmit = (data: AuthSchemaObj) => {
         isRegister ? register.mutate(data) : login.mutate(data);
@@ -51,12 +53,14 @@ const AuthForm = ({ isRegister }: Props) => {
                     <SwitchAuth isLogin />
                 }
                 <FormInput
+                    inputType="text"
                     label="Email"
                     placeholder="Registre seu e-mail"
                     control={control}
                     name="email"
                 />
                 <FormInput
+                    inputType="password"
                     label="Senha"
                     placeholder="***************"
                     control={control}
@@ -64,9 +68,9 @@ const AuthForm = ({ isRegister }: Props) => {
                 />
                 {isRegister
                     ?
-                    <SignUpBtn darkMode label="Cadastre-se" padding="py-2 px-12" />
+                    <SignUpBtn darkMode label="Cadastre-se" padding="py-2 px-12" disabled={isWorking} />
                     :
-                    <SignUpBtn darkMode label="Entre agora" padding="py-2 px-12" />
+                    <SignUpBtn darkMode label="Entre agora" padding="py-2 px-12" disabled={isWorking} />
                 }
                 <div className="flex items-center w-full gap-2 font-poppins font-light">
                     <span className="bg-white-el h-px flex-1 -ml-4"></span>

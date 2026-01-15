@@ -4,7 +4,7 @@ import { authUser, registerUser } from '../api/auth';
 import { AuthSchemaObj } from '../schemas/authSchema';
 import { useRouter } from 'next/navigation';
 
-export const useRegisterUser = () => {
+export const useRegisterUser = (setError: any) => {
     const router = useRouter();
 
     return useMutation({
@@ -13,8 +13,17 @@ export const useRegisterUser = () => {
         onSuccess: (data) => {
             router.push('/home');        
         },
-        onError: (err) => {
-            console.error("Error for register", err);
+        onError: (err: any) => {
+            const errorMsg = err.response?.data?.message;
+
+            if (errorMsg === "Este e-mail já está em uso") {
+                setError("email", { 
+                    type: "manual", 
+                    message: errorMsg 
+                });
+            } else {
+                console.error("Erro inesperado:", err);
+            }
         }
     });
 };
