@@ -34,7 +34,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ${poppins.variable} ${koho.variable} ${lao.variable}
         antialiased p-7 relative
       `}>
-        <Background />
         <Providers>{children}</Providers>
       </body>
     </html>

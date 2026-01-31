@@ -6,6 +6,7 @@ import ordersDesktop from '@/public/ordersDesktop.jpeg'
 import SectionTitle from "./components/sectionTitle"
 import Link from "next/link"
 import Header from "./components/header"
+import Background from "./components/background"
 
 export const Page = () => {
   return (
@@ -60,6 +61,7 @@ export const Page = () => {
           text="Visualize o tempo gasto em cada ordem de serviço de forma clara e objetiva."
         />
       </div>
+      <Background />
     </div>
   )
 }

@@ -32,13 +32,15 @@ export const useAuthUser = () => {
     const router = useRouter();
 
     return useMutation({
-        mutationFn: (data: AuthSchemaObj) => authUser(data),
-        mutationKey: ['authUser'],
-        onSuccess: () => {
-            router.push('/home');
-        },
-        onError: (err) => {
-            console.error("Error on auth", err);
-        }
-    })
+    mutationFn: (data: AuthSchemaObj) => authUser(data),
+    mutationKey: ['authUser'],
+    onSuccess: (data) => {
+        localStorage.setItem('authToken', data.token);
+
+        router.push('/home');
+    },
+    onError: (err) => {
+        console.error("Error on auth", err);
+    }
+});
 }

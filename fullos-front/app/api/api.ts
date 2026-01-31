@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const req = axios.create({
-    baseURL: 'http://localhost:1000'
+    baseURL: 'https://fullos-app.onrender.com'
 })
 
 req.interceptors.request.use((config) => {

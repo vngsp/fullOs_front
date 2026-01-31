@@ -11,25 +11,26 @@ type HeaderItem = {
 type Props = {
     headerItems: HeaderItem[],
     isBtn: boolean,
+    isApp?: boolean,
 }
-const Header = ({ headerItems, isBtn }: Props) => {
+const Header = ({ headerItems, isBtn, isApp }: Props) => {
     return (
         <div className="flex justify-center">
             <header
                 className="bg-secondary-el py-2 max-md:py-2.5 px-3 sm:p-1 rounded-2xl w-[90dvw] text-[3.2vw] sm:text-[12px] md:text-sm
-            text-nowrap font-koho shadow-sm"
+                text-nowrap font-koho shadow-sm"
             >
                 <ul className="flex items-center justify-between sm:justify-center gap-4 md:gap-6">
                     <li className="cursor-pointer">
                         <div className="sm:hidden">
-                            <Link href={'/'}>
+                            <Link href={isApp ? '/home' : '/'}>
                                 <Logo
                                     className="w-[7.5dvw]"
                                 />
                             </Link>
                         </div>
                         <div className="hidden sm:block py-1">
-                            <Link href={'/'}>
+                            <Link href={isApp ? '/home' : '/'}>
                                 <FullLogo
                                     className="w-20 md:w-24"
                                 />

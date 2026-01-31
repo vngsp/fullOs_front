@@ -34,7 +34,7 @@ const AuthForm = ({ isRegister }: Props) => {
     }
 
     const googleClick = () => {
-        window.location.href = 'http://localhost:1000/auth/google';
+        window.location.href = 'https://fullos-app.onrender.com/auth/google/callback';
     }
 
     return (
